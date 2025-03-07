@@ -93,6 +93,8 @@ app.post('/api/submit', async (req, res) => {
     }
 });
 
-app.listen(3001, () => {
-    console.log('后端运行在 http://localhost:3001');
+// ==== 关键修改：适配 Railway 端口环境变量 ====
+const port = process.env.PORT || 3001; // 优先使用环境变量 PORT，无则用 3001
+app.listen(port, () => {
+    console.log(`后端运行在 http://localhost:${port}`);
 });
